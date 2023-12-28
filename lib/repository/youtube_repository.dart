@@ -21,15 +21,11 @@ class YoutubeRepository {
     ); // videoId와 title이 null이 아닌 값들만 필터링
 
     // return listWithData
-    //     .map<VideoModel>((item) => VideoModel(
-    //         id: item['id']['videoId'], title: item['snippet']['title']))
-    //     .toList(); // 이렇게 생성된 VideoModel 리스트를 받음.
-    // return listWithData
-    // .map<VideoModel>(  // 제네릭으로 했으나, 안해도 된다.
+    // .map<VideoModel>(  // 제네릭으로 해야, future에서 데이터 제대로 받게된다.
     //   (item)=> VideoModel(id: item['id']['videoId'], title:item['snippet']['title'])
     // ).toList();
     final videoModels = listWithData
-        .map((item) => VideoModel(
+        .map<VideoModel>((item) => VideoModel(
             id: item['id']['videoId'], title: item['snippet']['title']))
         .toList();
     print('받은 비디오들: $videoModels');
